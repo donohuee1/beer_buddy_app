@@ -1,0 +1,14 @@
+<h1> <%= @bar.bar_name %> </h1>
+
+<ul>
+  <li>Bar Name: <%= @bar.bar_name %> </li>
+  <li>Location: <%= @bar.location %> </li>
+  <li>Phone Number: <%= @bar.phone_number %> </li>
+  <li>User Account: <%= @bar.user_id %> </li>
+</ul>
+
+<%= link_to "Edit this Bar", edit_bar_path(@bar) %>
+
+<%= link_to "Back to the Bar list", bars_path %>
+
+<%= link_to "Delete this Bar", bar_path, method: :delete, data: { confirm: "Are you sure you want to delete this bar?"} %>
