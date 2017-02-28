@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root "users#index"
   get "users/" => "users#index"
   get "users/new" => "users#new", as: :new_user
   get "users/:id" => "users#show", as: :user
@@ -6,7 +7,7 @@ Rails.application.routes.draw do
   get "bars/new" => "bars#new", as: :new_bar
   get "bars/:id" => "bars#show", as: :bar
   post "bars/" => "bars#create"
-  get "bars/:id/edit" => "bars#edit", as :edit_bar
+  get "bars/:id/edit" => "bars#edit", as: :edit_bar
   patch "bars/:id" => "bars#update"
   delete "bars/:id" => "bars#destroy"
   post "users/" => "users#create"
