@@ -1,0 +1,28 @@
+<h1>All Posts</h1>
+
+<ul>
+    <% @posts.each do |post| %>
+      <ul>
+        <li>
+            BAR NAME: <%= post.bar_name %>
+        </li>
+        <li>
+            LOCATION: <%= post.location %>
+        </li>
+        <li>
+            DATE: <%=post.date %>
+        </li>
+        <li>
+            TIME: <%=post.time %>
+        </li>
+        <li>
+            EVENT DETAILS: <%= post.contents %>
+        </li>
+            <%= link_to "More info", post_path(post) %>
+        </ul>
+
+    <% end %>
+</ul>
+
+<%= link_to "Back to the Bars list", bars_path %>
+<%= link_to "Back to the User list", users_path %>

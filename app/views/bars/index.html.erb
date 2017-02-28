@@ -15,7 +15,11 @@
         <li>
             USER ACCOUNT: <%=bar.user_id %>
         </li>
-            <%= link_to "More info", user_path(user) %>
+            <%= link_to "More info", bar_path(bar) %>
         </ul>
+
     <% end %>
 </ul>
+
+<%= link_to "Back to the User list", users_path %>
+<%= link_to "Back to the Post list", posts_path %>
