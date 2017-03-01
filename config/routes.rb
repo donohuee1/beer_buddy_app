@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'pages/secret'
+
   root to: "users#new"
   get "users/" => "users#index"
 
@@ -21,29 +23,30 @@ Rails.application.routes.draw do
   get "users/:id/edit" => "users#edit", as: :edit_user
   patch "users/:id" => "users#update"
   delete "users/:id" => "users#destroy"
+#Nested resources; each post belongs to a bar; posts cannot exist without a bar.
+  # resources :users do
+  #   resources :bars do
+  #     resources :posts
+  #   end
+  # end
 
-#Nested resources, meaning, posts cannot exist without a bar.
-  resources :bars do
-    resources :posts
-  end
+  #bars routes
+  get "users/:user_id/bars/" => "bars#index", as: :user_bars
+  get "users/:user_id/bars/new" => "bars#new", as: :new_user_bar
+  get "users/:user_id/bars/:id" => "bars#show", as: :bar
+  post "users/:user_id/bars/" => "bars#create"
+  get "users/:user_id/bars/:id/edit" => "bars#edit", as: :edit_bar
+  patch "users/:user_id/bars/:id" => "bars#update"
+  delete "users/:user_id/bars/:id" => "bars#destroy"
 
-  # #bars routes
-  # get "bars/" => "bars#index"
-  # get "bars/new" => "bars#new", as: :new_bar
-  # get "bars/:id" => "bars#show", as: :bar
-  # post "bars/" => "bars#create"
-  # get "bars/:id/edit" => "bars#edit", as: :edit_bar
-  # patch "bars/:id" => "bars#update"
-  # delete "bars/:id" => "bars#destroy"
-
-  # #posts routes
-  # get "posts/" => "posts#index"
-  # get "posts/new" => "posts#new", as: :new_post
-  # get "posts/:id" => "posts#show", as: :post
-  # post "posts/" => "posts#create"
-  # get "posts/:id/edit" => "posts#edit", as: :edit_post
-  # patch "posts/:id" => "posts#update"
-  # delete "posts/:id" => "posts#destroy"
+  #posts routes
+  get "posts/" => "posts#index"
+  get "posts/new" => "posts#new", as: :new_post
+  get "posts/:id" => "posts#show", as: :post
+  post "posts/" => "posts#create"
+  get "posts/:id/edit" => "posts#edit", as: :edit_post
+  patch "posts/:id" => "posts#update"
+  delete "posts/:id" => "posts#destroy"
 
 
 

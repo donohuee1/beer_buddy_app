@@ -18,7 +18,7 @@
         <li>
             EVENT DETAILS: <%= post.contents %>
         </li>
-            <%= link_to "More info", post_path(post) %>
+            <%= link_to "More info", bar_post_path(@bar.id, post.id) %>
         </ul>
 
     <% end %>

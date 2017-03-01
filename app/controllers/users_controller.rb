@@ -35,19 +35,22 @@ class UsersController < ApplicationController
 
   def update
   @user = User.find(params[:id])
+    if current_user.id == @user.id
 
-  if @user.update_attributes(params.require(:user).permit(:user_name, :email, :password, :age))
-    redirect_to users_path
-  else
-    render :edit
+      @user.update_attributes(user_params)
+      redirect_to users_path
+
+    else
+      flash[:notice] = "You are not authorized!"
+      redirect_to request.referrer
+    end
   end
-end
 
-def destroy
-  @user = User.find(params[:id])
-  @user.destroy
-  redirect_to users_path
-end
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to users_path
+  end
 
 
 private
@@ -57,5 +60,11 @@ private
     # that can be submitted by a form to the user model #=> require(:user)
     params.require(:user).permit(:user_name, :email, :password, :password_confirmation, :age)
   end
+
+  # def lite_user_params
+  #   # strong parameters - whitelist of allowed fields #=> permit(:name, :email, ...)
+  #   # that can be submitted by a form to the user model #=> require(:user)
+  #   params.require(:user).except!(:password, :password_confirmation)
+  # end
 
 end

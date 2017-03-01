@@ -1,6 +1,6 @@
 <h1>Edit this user</h1>
 
-<%= form_for @user do |f| %>
+<%= form_for @user, url: {action: "update", method: "patch"} do |f| %>
 
     <div>
         <%= f.label :user_name %>
@@ -15,6 +15,16 @@
     <div>
         <%= f.label :age %>
         <%= f.text_field :age %>
+    </div>
+
+    <div>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+    </div>
+
+    <div>
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation %>
     </div>
 
     <%= f.submit "Submit these edits" %>
