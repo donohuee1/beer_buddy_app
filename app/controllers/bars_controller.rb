@@ -1,10 +1,10 @@
 class BarsController < ApplicationController
-  before_action :set_bar, only: [:update]
+  before_action :set_bar, only: [:update, :index, :show, :new, :create]
 
-  def all_user_bars
-    @user = User.find(session[:user_id])
-    @bars = Bar.find(params[:id])
-  end
+  # def all_user_bars
+  #   @user = User.find(session[:user_id])
+  #   @bars = Bar.find(params[:id])
+  # end
 
   def index
     @user = User.find(session[:user_id])
@@ -22,7 +22,7 @@ class BarsController < ApplicationController
   end
 
   def create
-  @user = User.find(session[:user_id])
+  @user = User.find(params[:user_id])
   @bar = Bar.new(bar_params)
 
   if @bar.save

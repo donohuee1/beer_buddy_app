@@ -1,6 +1,6 @@
 <h1>Add a new bar!</h1>
 
-<%= form_for [current_user, @bar] do |f| %>
+<%= form_for [@user, @bar] do |f| %>
 
     <div>
         <%= f.label :bar_name %>
