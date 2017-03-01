@@ -1,6 +1,6 @@
 <h1>Edit this bar</h1>
 
-<%= form_for @bar do |f| %>
+<%= form_for @bar, url: {action: "update", method: "patch"} do |f| %>
 
     <div>
         <%= f.label :bar_name %>
