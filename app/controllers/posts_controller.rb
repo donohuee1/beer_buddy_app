@@ -4,7 +4,8 @@ class PostsController < ApplicationController
   def index
     #@user = User.find(params[:user_id])
     #@bar = Bar.find(params[:bar_id])
-    @posts = Post.all
+    @posts = params[:bar_id] ? Bar.find(params[:bar_id]).posts : Post.all
+
   end
 
   def show
@@ -13,12 +14,16 @@ class PostsController < ApplicationController
   end
 
   def new
-    @bar = Bar.find(params[:bar_id])
-    @post = @bar.posts.new
+    #@bar = Bar.find(params[:bar_id])
+    @post = Post.new
   end
 
   def create
-    @bar = Bar.find(params[:bar_id])
+    #@post = @bar.posts.new(post_params)
+    #@user = User.find(params[:user_id])
+    @user = current_user
+    @bar = @user.Bar.find(params[:bar_id])
+    #@bar = Bar.find(params[:bar_id])
     @post = @bar.posts.new(post_params)
 
     if @post.save
@@ -52,7 +57,7 @@ class PostsController < ApplicationController
 
 private
 def post_params
-  params.require(:post).permit(:bar_name, :contents, :date, :time, :location, :user_id)
+  params.require(:post).permit(:contents, :date, :time, :location, :user_id)
 end
 
 def set_post
