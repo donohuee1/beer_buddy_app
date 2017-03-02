@@ -14,3 +14,4 @@
 <%#= link_to "Delete this Bar", bar_path, method: :delete, data: { confirm: "Are you sure you want to delete this bar?"} %>
 
 <%#= link_to "Back to the User list", bars_path %>
+<%= link_to "Delete this Bar", bar_path, method: :delete, data: { confirm: "Are you sure you want to delete this bar?"} if @user == current_user %>
