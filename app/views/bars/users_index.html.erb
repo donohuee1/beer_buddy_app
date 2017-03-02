@@ -1,4 +1,4 @@
-<h1>All Bars (not user-specific)</h1>
+<h1>All User's Bars (user-specific)</h1>
 <ul>
     <% @bars.each do |bar| %>
       <ul>
@@ -16,8 +16,9 @@
         </li>
             <%#= link_to "More info", user_bar_path(bar.user, bar.id) %>
         </ul>
+        <hr>
     <% end %>
 </ul>
 
-<%= link_to "Back to the User list", users_path %>
-<%= link_to "Create New Bar", new_bar_path(@user) %>
+<%#= link_to "Back to the User list", users_path %>
+<%#= link_to "Create New Bar", new_bar_path(@user) %>

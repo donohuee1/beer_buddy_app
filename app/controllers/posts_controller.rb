@@ -1,24 +1,28 @@
 class PostsController < ApplicationController
+  before_action :set_post, only: [:update, :destroy, :show, :edit]
 
   def index
+    #@user = User.find(params[:user_id])
+    #@bar = Bar.find(params[:bar_id])
     @posts = Post.all
-    @bar = Bar.find(params[:id])
   end
 
   def show
+    @bar = Bar.find(params[:bar_id])
     @post = Post.find(params[:id])
-    @bar = Bar.find(params[:id])
   end
 
   def new
-    @post = Post.new
+    @bar = Bar.find(params[:bar_id])
+    @post = @bar.posts.new
   end
 
   def create
-    @post = Post.new(params.require(:post).permit(:bar_name, :contents, :date, :time, :location))
+    @bar = Bar.find(params[:bar_id])
+    @post = @bar.posts.new(post_params)
 
     if @post.save
-      redirect_to posts_path
+      redirect_to bar_posts_path
     else
       render :new
     end
@@ -26,15 +30,15 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    @bar = Bar.find(params[:id])
+    #@bar = Bar.find(params[:id])
   end
 
   def update
     @post = Post.find(params[:id])
-    @bar = Bar.find(params[:id])
+    #@bar = Bar.find(params[:id])
 
-    if @post.update_attributes(params.require(:post).permit(:bar_name, :contents, :date, :time, :location))
-      redirect_to posts_path
+    if @post.update_attributes(post_params)
+      redirect_to bar_posts_path
     else
       render :edit
     end
@@ -43,7 +47,16 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to posts_path
+    redirect_to bar_posts_path
   end
+
+private
+def post_params
+  params.require(:post).permit(:bar_name, :contents, :date, :time, :location, :user_id)
+end
+
+def set_post
+  @post = Post.find(params[:id])
+end
 
 end

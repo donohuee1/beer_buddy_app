@@ -6,6 +6,29 @@
   <li>Age: <%= @user.age %> </li>
 </ul>
 
+<!-- #.each @user.bars
+
+# def all_user_bars
+#   @user = User.find(session[:user_id])
+#   @bars = @user.bars
+#end -->
+
+<ul>
+    <% @user.bars.each do |bar| %>
+        <li>
+            BAR NAME: <%= bar.bar_name %>
+            <br>
+            LOCATION: <%= bar.location %>
+            <br>
+            PHONE NUMBER: <%= bar.phone_number %>
+            <%#= link_to "More info", user_path(user) %>
+            <%#= link_to "User's Bar", users_path(user) %>
+        </li>
+        <hr>
+    <% end %>
+
+</ul>
+
 <%#= link_to "Edit this User", edit_user_path(@user) %>
 
 <%#= link_to "Back to the Users list", users_path %>

@@ -1,14 +1,14 @@
 class BarsController < ApplicationController
   before_action :set_bar, only: [:update, :destroy, :show, :edit]
 
-  # def all_user_bars
-  #   @user = User.find(session[:user_id])
-  #   @bars = Bar.find(params[:id])
-  # end
-
   def index
-    @user = User.find(params[:user_id])
+    #@user = User.find(params[:user_id])
     @bars = Bar.all
+  end
+
+  def users_index
+    @user = User.find(params[:user_id])
+    @bars = @user.bars.all
   end
 
   def show

@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   # end
 
   #bars routes
-  get "users/:user_id/bars/" => "bars#index", as: :user_bars
+  get "users/:user_id/bars/" => "bars#users_index", as: :user_bars
+  get "bars/" => "bars#index", as: :bars
   get "users/:user_id/bars/new" => "bars#new", as: :new_user_bar
   get "users/:user_id/bars/:id" => "bars#show", as: :bar
   post "users/:user_id/bars/" => "bars#create"
@@ -21,7 +22,7 @@ Rails.application.routes.draw do
 
   #posts routes
   get "posts/" => "posts#index"
-  get "posts/new" => "posts#new", as: :new_post
+  get "bars/:bar_id/posts/new" => "posts#new", as: :new_post
   get "posts/:id" => "posts#show", as: :post
   post "posts/" => "posts#create"
   get "posts/:id/edit" => "posts#edit", as: :edit_post
@@ -29,7 +30,7 @@ Rails.application.routes.draw do
   delete "posts/:id" => "posts#destroy"
 
 
-  get "users/" => "users#index"
+  get "users/" => "users#index", as: :users
   # create (post) action for when sign up form is submitted:
   post "users/" => "users#create"
   # sign up page with form:
