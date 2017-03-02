@@ -1,4 +1,4 @@
-<h1>All User's Bars (user-specific)</h1>
+<h1>All  <%= @user.user_name %>'s Bars (user-specific)</h1>
 <ul>
     <% @bars.each do |bar| %>
       <ul>
@@ -12,7 +12,8 @@
             PHONE NUMBER: <%= bar.phone_number %>
         </li>
         <li>
-            USER ACCOUNT: <%=bar.user_id %>
+            USER ACCOUNT: <%= @user.user_name %>
+
         </li>
             <%#= link_to "More info", user_bar_path(bar.user, bar.id) %>
         </ul>
@@ -22,3 +23,6 @@
 
 <%#= link_to "Back to the User list", users_path %>
 <%#= link_to "Create New Bar", new_bar_path(@user) %>
+<%= link_to "Back to the Users list", users_path %>
+|
+<%= link_to "Users Profile", user_path(@user) %>
