@@ -9,6 +9,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:user_id])
     @bar = Bar.find(params[:bar_id])
     @post = Post.find(params[:id])
   end
@@ -17,6 +18,7 @@ class PostsController < ApplicationController
     @user = User.find(params[:user_id])
     @bar = Bar.find(params[:bar_id])
     @post = Post.new
+    redirect_to all_posts_path(current_user) if current_user != @bar.user
   end
 
   def create
@@ -29,8 +31,8 @@ class PostsController < ApplicationController
 
     @bar = Bar.find(params[:bar_id])
     @post = Post.create(post_params)
-    @post.user = @user
-    @post.bar = @bar
+    @post.user_id = @user.id
+    @post.bar_id = @bar.id
 
     if @post.save
       redirect_to user_bar_posts_path(@user, @bar)

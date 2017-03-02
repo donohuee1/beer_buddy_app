@@ -46,6 +46,7 @@ class BarsController < ApplicationController
   end
 end
 
+
 def destroy
   @bar = Bar.find(params[:id])
   #if @bar == current_user
