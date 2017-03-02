@@ -3,7 +3,7 @@
     <% @bars.each do |bar| %>
       <ul>
         <li>
-            NAME: <%= bar.bar_name %>
+            NAME: <%= link_to bar.bar_name, bar_path(bar.user, bar) %>
         </li>
         <li>
             LOCATION: <%= bar.location %>

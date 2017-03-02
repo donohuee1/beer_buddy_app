@@ -48,8 +48,12 @@ end
 
 def destroy
   @bar = Bar.find(params[:id])
-  @bar.destroy
-  redirect_to user_bars_path
+  if @bar == current_user
+    @bar.destroy
+    redirect_to user_bars_path(current_user)
+  else
+    redirect_to users_path
+  end
 end
 
 private

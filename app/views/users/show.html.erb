@@ -33,7 +33,7 @@
 
 <%#= link_to "Back to the Users list", users_path %>
 
-<%#= link_to "Delete this User", user_path, method: :delete, data: { confirm: "Are you sure you want to delete this user?"} %>
+<%= link_to "Delete this User", user_path, method: :delete, data: { confirm: "Are you sure you want to delete this user?"} if @user == current_user %>
 
 <%#= link_to "Back to the Posts list", user_bar_posts_path %>
 

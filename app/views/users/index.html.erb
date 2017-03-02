@@ -5,7 +5,7 @@
         <li>
             NAME: <%= user.user_name %> - EMAIL: <%= user.email %> - AGE: <%= user.age %>
             <%= link_to "More info", user_path(user) %>
-            <%= link_to "User's Bar", users_path(user) %>
+            <%= link_to "User's Bar", user_bars_path(user) %>
         </li>
         <hr>
     <% end %>

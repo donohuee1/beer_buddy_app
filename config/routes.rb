@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   delete "users/:user_id/bars/:id" => "bars#destroy"
 
   #posts routes
-  get "users/:user_id/bars/:bar_id/posts/" => "posts#index"
+  get "users/:user_id/bars/:bar_id/posts/" => "posts#index", as: :all_posts
   get "users/:user_id/bars/:bar_id/posts/new" => "posts#new", as: :new_user_bar_post
   #get "posts/:id" => "posts#show", as: :post
   get "users/:user_id/bars/:bar_id/posts/:id" => "posts#show", as: :user_bar_post
@@ -67,6 +67,6 @@ Rails.application.routes.draw do
   post "/login" => "sessions#create"
 
   # delete action to log out:
-  delete "/logout" => "sessions#destroy"
+  delete "logout/" => "sessions#destroy"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

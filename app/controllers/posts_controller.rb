@@ -29,8 +29,8 @@ class PostsController < ApplicationController
 
     @bar = Bar.find(params[:bar_id])
     @post = Post.create(post_params)
-    @post.user_id = @user.id
-    @post.bar_id = @bar.id
+    @post.user = @user
+    @post.bar = @bar
 
     if @post.save
       redirect_to user_bar_posts_path(@user, @bar)
@@ -49,7 +49,7 @@ class PostsController < ApplicationController
     #@bar = Bar.find(params[:id])
 
     if @post.update_attributes(post_params)
-      redirect_to user_bar_post_path
+      redirect_to user_bar_posts_path
     else
       render :edit
     end
@@ -58,12 +58,12 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to bar_posts_path
+    redirect_to all_posts_path
   end
 
 private
 def post_params
-  params.require(:post).permit(:contents, :date, :time, :location, :user_id)
+  params.require(:post).permit(:contents, :date, :time, :location, :user_id, :bar_id)
 end
 
 def set_post

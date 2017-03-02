@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   if @user.save
     # If user saves in the db successfully:
     flash[:notice] = "Account created successfully!"
+    session[:user_id] = @user.id
     redirect_to root_path
   else
     # If user fails model validation - probably a bad password or duplicate email:
@@ -49,6 +50,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
+    session.delete(:user_id)
     redirect_to users_path
   end
 
@@ -58,7 +60,7 @@ private
   def user_params
     # strong parameters - whitelist of allowed fields #=> permit(:name, :email, ...)
     # that can be submitted by a form to the user model #=> require(:user)
-    params.require(:user).permit(:user_name, :email, :password, :password_confirmation, :age)
+    params.require(:user).permit(:user_name, :email, :password, :password_confirmation, :age, bars_attributes:[:id, :bar_name, :location, :phone_number, :_destroy])
   end
 
   # def lite_user_params
