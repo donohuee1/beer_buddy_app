@@ -21,13 +21,32 @@ Rails.application.routes.draw do
   delete "users/:user_id/bars/:id" => "bars#destroy"
 
   #posts routes
-  get "posts/" => "posts#index"
-  get "bars/:bar_id/posts/new" => "posts#new", as: :new_post
-  get "posts/:id" => "posts#show", as: :post
-  post "posts/" => "posts#create"
-  get "posts/:id/edit" => "posts#edit", as: :edit_post
-  patch "posts/:id" => "posts#update"
-  delete "posts/:id" => "posts#destroy"
+  get "users/:user_id/bars/:bar_id/posts/" => "posts#index"
+  get "users/:user_id/bars/:bar_id/posts/new" => "posts#new", as: :new_user_bar_post
+  #get "posts/:id" => "posts#show", as: :post
+  get "users/:user_id/bars/:bar_id/posts/:id" => "posts#show", as: :user_bar_post
+  post "users/:user_id/bars/:bar_id/posts" => "posts#create", as: :user_bar_posts
+  get "users/:user_id/bars/:bar_id/posts/:id/edit" => "posts#edit", as: :edit_user_bar_post
+  patch "users/:user_id/bars/:bar_id/posts/:id" => "posts#update"
+  delete "users/:user_id/bars/:bar_id/posts/:id" => "posts#destroy"
+
+  #responses routes
+  # get "users/:user_id/responses/" => "responses#users_index", as: :user_responses
+  # get "responses/" => "responses#index", as: :responses
+  # get "users/:user_id/responses/new" => "responses#new", as: :new_user_response
+  # get "users/:user_id/responses/:id" => "responses#show", as: :response
+  # post "users/:user_id/responses/" => "responses#create"
+  # get "users/:user_id/responses/:id/edit" => "responses#edit", as: :edit_response
+  # patch "users/:user_id/responses/:id" => "responses#update"
+  # delete "users/:user_id/responses/:id" => "responses#destroy"
+  # get "users/:user_id/responses/:response_id/posts/" => "posts#index"
+  # get "users/:user_id/responses/:response_id/posts/new" => "posts#new", as: :new_user_response_post
+  # #get "posts/:id" => "posts#show", as: :post
+  # get "users/:user_id/responses/:response_id/posts/:id" => "posts#show", as: :user_response_post
+  # post "users/:user_id/responses/:response_id/posts" => "posts#create", as: :user_response_posts
+  # get "users/:user_id/responses/:response_id/posts/:id/edit" => "posts#edit", as: :edit_user_response_post
+  # patch "users/:user_id/responses/:response_id/posts/:id" => "posts#update"
+  # delete "users/:user_id/responses/:response_id/posts/:id" => "posts#destroy"
 
 
   get "users/" => "users#index", as: :users

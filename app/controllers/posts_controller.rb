@@ -4,8 +4,8 @@ class PostsController < ApplicationController
   def index
     #@user = User.find(params[:user_id])
     #@bar = Bar.find(params[:bar_id])
-    @posts = params[:bar_id] ? Bar.find(params[:bar_id]).posts : Post.all
-
+    #@posts = params[:bar_id] ? Bar.find(params[:bar_id]).posts : Post.all
+    @posts = Post.all
   end
 
   def show
@@ -14,20 +14,26 @@ class PostsController < ApplicationController
   end
 
   def new
-    #@bar = Bar.find(params[:bar_id])
+    @user = User.find(params[:user_id])
+    @bar = Bar.find(params[:bar_id])
     @post = Post.new
   end
 
   def create
     #@post = @bar.posts.new(post_params)
-    #@user = User.find(params[:user_id])
-    @user = current_user
-    @bar = @user.Bar.find(params[:bar_id])
+    @user = User.find(params[:user_id])
+    # @user = current_user
+    # @bar = @user.bars.find(params[:bar_id])
     #@bar = Bar.find(params[:bar_id])
-    @post = @bar.posts.new(post_params)
+    # @post = @bar.posts.new(post_params)
+
+    @bar = Bar.find(params[:bar_id])
+    @post = Post.create(post_params)
+    @post.user_id = @user.id
+    @post.bar_id = @bar.id
 
     if @post.save
-      redirect_to bar_posts_path
+      redirect_to user_bar_posts_path(@user, @bar)
     else
       render :new
     end
@@ -43,7 +49,7 @@ class PostsController < ApplicationController
     #@bar = Bar.find(params[:id])
 
     if @post.update_attributes(post_params)
-      redirect_to bar_posts_path
+      redirect_to user_bar_post_path
     else
       render :edit
     end
