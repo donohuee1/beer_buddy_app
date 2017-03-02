@@ -39,4 +39,4 @@
 
 <%#= link_to "Back to the Bars list", bars_path %>
 
-<%= link_to "Create New Bar!", new_user_bar_path(@user) %>
+<%= link_to "Create New Bar!", new_user_bar_path(@user) if @user == current_user %>
