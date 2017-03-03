@@ -12,8 +12,8 @@ class BarsController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:user_id])
     @bar = Bar.find(params[:id])
+    @user = User.find(@bar.user_id)
   end
 
   def new
@@ -37,10 +37,12 @@ class BarsController < ApplicationController
   end
 
   def update
-  @bar = Bar.find(params[:id])
+    @bar = Bar.find(params[:id])
+    @user = User.find(@bar.user_id)
+  #@user = User.find(params[:user_id])
 
   if @bar.update_attributes(bar_params)
-    redirect_to bars_path
+    redirect_to bar_path
   else
     render :edit
   end
