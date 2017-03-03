@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'pages/secret'
 
-  root to: "users#new"
+  root to: "bars#index"
 
 #Nested resources; each post belongs to a bar; posts cannot exist without a bar.
   # resources :users do

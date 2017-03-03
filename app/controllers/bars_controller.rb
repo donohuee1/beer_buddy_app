@@ -50,7 +50,6 @@ end
 
 
 def destroy
-  @user = User.find(params[:user_id])
   @bar = Bar.find(params[:id])
   #if @bar == current_user
     @bar.destroy

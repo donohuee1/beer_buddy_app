@@ -3,7 +3,11 @@
 <ul>
     <% @users.each do |user| %>
         <li>
-            NAME: <%= user.user_name %> - EMAIL: <%= user.email %> - AGE: <%= user.age %>
+            NAME: <%= user.user_name %>
+            <br>
+            EMAIL: <%= user.email %>
+            <br>
+            AGE: <%= user.age %>
             <%= link_to "More info", user_path(user) %>
             <%= link_to "User's Bar", user_bars_path(user) %>
         </li>
