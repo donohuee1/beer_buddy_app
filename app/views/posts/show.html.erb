@@ -1,12 +1,13 @@
 <h1> POSTS </h1>
 
 <ul>
-  <li>Bar Name: <%= @post.bar_name %> </li>
+  <li>Bar Name: <%= @bar.bar_name %> </li>
   <li>Event Description: <%= @post.contents %> </li>
   <li>Event Date: <%= @post.date %> </li>
   <li>Event Time: <%= @post.time %> </li>
   <li>Event Location: <%= @post.location %> </li>
-  <li><%= link_to "Edit this Post", edit_user_bar_path(@bar) if @user == current_user %> </li>
+  <li><%= link_to "Edit this Post", edit_user_bar_post_path(@post)  if @user == current_user %> </li>
+  <li><%= link_to "Delete this Post", user_bar_post_path(@user, @bar, @post) if @user == current_user %> </li>
 
 </ul>
 
@@ -15,4 +16,4 @@
 <%#= link_to "Edit this post!", edit_bar_post_path(@bar.id, @post) %>
 <%#= link_to "Back to the post list!", bar_posts_path(@bar.id) %>
 
-by: <%#= @tweet.user.name %>
+ <%#= @tweet.user.name %>

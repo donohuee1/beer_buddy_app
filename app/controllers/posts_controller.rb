@@ -54,7 +54,7 @@ class PostsController < ApplicationController
     #@bar = Bar.find(params[:id])
 
     if @post.update_attributes(post_params)
-      redirect_to bars_path  
+      redirect_to user_bar_post_path(@post)
     else
       render :edit
     end
@@ -63,7 +63,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to all_posts_path
+    redirect_to all_posts_path(@post)
   end
 
 private
