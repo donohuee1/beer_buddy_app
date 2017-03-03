@@ -42,16 +42,19 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @bar = Bar.find(params[:bar_id])
+    @user = User.find(params[:user_id])
     @post = Post.find(params[:id])
-    #@bar = Bar.find(params[:id])
   end
 
   def update
+    @bar = Bar.find(params[:bar_id])
+    @user = User.find(params[:user_id])
     @post = Post.find(params[:id])
     #@bar = Bar.find(params[:id])
 
     if @post.update_attributes(post_params)
-      redirect_to user_bar_posts_path
+      redirect_to bars_path  
     else
       render :edit
     end

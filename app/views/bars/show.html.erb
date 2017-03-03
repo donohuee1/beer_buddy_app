@@ -27,6 +27,7 @@
         <li>
             EVENT DETAILS: <%= post.contents %>
         </li>
+        <%= link_to "Edit this Post", edit_user_bar_post_path(@user, @bar, post) if @user == current_user %>
             <%#= link_to "More info", bar_post_path(@bar.id, post.id) %>
         </ul>
         <hr>

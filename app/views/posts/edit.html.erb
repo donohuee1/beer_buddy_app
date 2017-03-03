@@ -1,11 +1,11 @@
 <h1>Edit this post!</h1>
 
-<%= form_for @post, url: {action: "update", method: "patch"} do |f| %>
+<%= form_for [@user, @bar, @post] do |f| %>
 
-    <div>
-        <%= f.label :bar_name %>
-        <%= f.text_field :bar_name %>
-    </div>
+    <!-- <div>
+        <%#= f.label :bar_name %>
+        <%#= f.text_field :bar_name %>
+    </div> -->
 
     <div>
         <%= f.label :contents %>
