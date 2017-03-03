@@ -4,13 +4,21 @@
 ####1. Project Description
 An app where users can post a suggested hang out at a local bar on a certain date/time.  Other users can then reply with comments and/or RSVP for the meet up.
 
-####2. User Stories
+####2. Technologies Used
+
+####3. Approach taken
+
+####4. Installation/Startup instructions
+
+####5. Unsolved Problems/Next Steps
+
+####6. User Stories
 [Link to Trello] (https://trello.com/b/94HGeJtc/wdi-sm-43-project-2)
 
-####3. ERD
+####7. ERD
 ![ERD](./app/assets/images/image_6.png)
 
-####4. Wireframes
+####8. Wireframes
 ![Wireframe 1](./app/assets/images/image_1.png)
 
 ![Wireframe 2](./app/assets/images/image_2.png)
