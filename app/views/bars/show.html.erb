@@ -28,6 +28,8 @@
             EVENT DETAILS: <%= post.contents %>
         </li>
         <%= link_to "Edit this Post", edit_user_bar_post_path(@user, @bar, post) if @user == current_user %>
+        <li><%= link_to "Delete this Post", user_bar_post_path(@user, @bar, post), method: :delete, data: { confirm: "Are you sure you want to delete this post?"} if @user == current_user %></li>
+
             <%#= link_to "More info", bar_post_path(@bar.id, post.id) %>
         </ul>
         <hr>
