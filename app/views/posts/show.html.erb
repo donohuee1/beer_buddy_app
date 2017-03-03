@@ -7,7 +7,8 @@
   <li>Event Time: <%= @post.time %> </li>
   <li>Event Location: <%= @post.location %> </li>
   <li><%= link_to "Edit this Post", edit_user_bar_post_path(@post)  if @user == current_user %> </li>
-  <li><%= link_to "Delete this Post", user_bar_post_path(@user, @bar, @post) if @user == current_user %> </li>
+  <!-- <li><%#= link_to "Delete this Post", user_bar_post_path(@user, @bar, @post) if @user == current_user %> </li> -->
+  <li><%= link_to "Delete this Post", user_bar_post_path, method: :delete, data: { confirm: "Are you sure you want to delete this post?"} if @user == current_user %></li>
 
 </ul>
 
