@@ -40,7 +40,7 @@ class BarsController < ApplicationController
   @bar = Bar.find(params[:id])
 
   if @bar.update_attributes(bar_params)
-    redirect_to user_bars_path
+    redirect_to bars_path
   else
     render :edit
   end
