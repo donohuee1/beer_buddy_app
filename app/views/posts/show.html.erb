@@ -6,6 +6,8 @@
   <li>Event Date: <%= @post.date %> </li>
   <li>Event Time: <%= @post.time %> </li>
   <li>Event Location: <%= @post.location %> </li>
+  <li><%= link_to "Edit this Post", edit_user_bar_path(@bar) if @user == current_user %> </li>
+
 </ul>
 
 
